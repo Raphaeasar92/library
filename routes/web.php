@@ -18,8 +18,7 @@ use App\Http\Controllers\BookController;
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
-
+ 
 Route::get('/home', [BookController::class, 'home', '__invoke'])->name('home');
 Route::get('/dashboard', [BookController::class, 'home', '__invoke'])->name('dashboard');
 
@@ -28,13 +27,13 @@ Route::get('/books', [BookController::class, 'index', '__invoke'])->name('books'
 Route::get('/books/create', [BookController::class, 'create', '__invoke']);
 Route::post('/books/store', [BookController::class, 'store', '__invoke']);
 
-Route::get('/books/{id}', [BookController::class, 'show', '__invoke']);
+// Route::get('/books/{id}', [BookController::class, 'show', '__invoke']);
 
 Route::get('/books/{id}', [BookController::class, 'store', '__invoke']);
-Route::post('/books/{id}', [BookController::class, 'store', '__invoke']);
+// Route::post('/books/{id}', [BookController::class, 'store', '__invoke']);
 
 Route::get('/books/{id}/edit', [BookController::class, 'edit', '__invoke']);
-Route::put('/books/{id}/edit', [BookController::class, 'edit', '__invoke']);
+// Route::put('/books/{id}/edit', [BookController::class, 'edit', '__invoke']);
 
 Route::delete('/books/{id}', [BookController::class, 'destroy', '__invoke']);
 
