@@ -17,7 +17,7 @@
 
         @if(isset($book))
             <form name="formEdit" id="formEdit" method="post" action="{{url("books/$book->id")}}">
-                @method('PUT')
+                @method('POST')
         @else
             <form name="formCad" id="formCad" method="post" action="{{url('books')}}">
         @endif

@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center">Reservation</h1><hr>
+    <h1 class="text-center">Library - Reservation</h1><hr>
 
   <div class="text-center mt-3 mb-4">
     <a href="{{url('create_reservations/create')}}">

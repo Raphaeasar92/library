@@ -8,6 +8,7 @@
         @php
             $book=$reservation->find($reservation->id)->relReservations;
         @endphp
+        {{-- Title: {{$book->title}} <br> --}}
         Title: {{$book->title}} <br>
         Days: {{$reservation->days}} <br>
     </div>

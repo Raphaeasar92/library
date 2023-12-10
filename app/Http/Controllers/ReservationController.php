@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ModelBook;
 use App\Models\ModelReservation;
-use App\Http\Requests\BookRequest;
+use App\Http\Requests\ReservationRequest;
+use App\Models\User;
 
 class ReservationController extends Controller
 {
@@ -41,7 +42,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $users=$this->objUser->all();
+        $books=$this->objBook->all();
         return view('reservation_create',compact('books'));
     }
 
@@ -53,7 +54,7 @@ class ReservationController extends Controller
      */
     public function store(ReservationRequest $request)
     {
-        $cad=$this->objBook->create([
+        $cad=$this->objReservation->create([
            'id_book'=>$request->id_book,
            'days'=>$request->days
         ]);
@@ -70,8 +71,8 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        $book=$this->objBook->find($id);
-        return view('reservation_show',compact('book'));
+        $reservation=$this->objReservation->find($id);
+        return view('reservation_show',compact('reservation'));
     }
 
     /**
@@ -82,9 +83,9 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        $book=$this->objBook->find($id);
+        $book=$this->objReservation->find($id);
         $users=$this->objUser->all();
-        return view('reservation_create',compact('reservation','books'));
+        return view('reservation_create',compact('reservation','reservations'));
     }
 
     /**
@@ -96,7 +97,7 @@ class ReservationController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        $this->objBook->where(['id'=>$id])->update([
+        $this->objReservation->where(['id'=>$id])->update([
             'id_book'=>$request->id_book,
             'days'=>$request->days
         ]);
