@@ -57,7 +57,7 @@
                             </li>
                                
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('books') }}">{{ __('Register Reservation') }}</a>
+                                <a class="nav-link" href="{{ route('reservations') }}">{{ __('Register Reservation') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">
