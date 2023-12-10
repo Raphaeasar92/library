@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 10/12/2023 às 13:42
+-- Tempo de geração: 10/12/2023 às 22:11
 -- Versão do servidor: 8.2.0
 -- Versão do PHP: 7.4.33
 
@@ -38,14 +38,16 @@ CREATE TABLE IF NOT EXISTS `book` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `book_id_user_foreign` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `book`
 --
 
 INSERT INTO `book` (`id`, `id_user`, `title`, `pages`, `price`, `created_at`, `updated_at`) VALUES
-(12, 10, 'the the', 200, 100.99, '2023-12-01 21:19:04', '2023-12-08 06:32:58');
+(18, 9, 'Senhor dos Anéis', 1211, 45.99, '2023-12-10 18:41:58', '2023-12-10 22:29:32'),
+(19, 12, 'A onda ww', 160, 29.99, '2023-12-10 22:22:39', '2023-12-11 00:57:28'),
+(20, 10, 'Titanic', 158, 59.99, '2023-12-10 22:24:06', '2023-12-10 22:29:56');
 
 -- --------------------------------------------------------
 
@@ -143,8 +145,17 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `register_id_book_foreign` (`id_book`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `reservation_id_book_foreign` (`id_book`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `id_book`, `days`, `created_at`, `updated_at`) VALUES
+(16, 10, 90, '2023-12-10 22:09:33', '2023-12-10 22:09:33'),
+(17, 11, 90, '2023-12-01 21:19:04', '2023-12-01 21:19:04'),
+(18, 9, 90, '2023-12-01 21:19:04', '2023-12-01 21:19:04');
 
 -- --------------------------------------------------------
 
@@ -170,9 +181,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('75Q5lhvU02TfF7okMNIiKkQhEwdSGVu0RFhwDKwW', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiTUtVMzFidktOcFoyeUNIUEJMRXhxbkNpSU1WU1U3aFgxVEk5Rk92ciI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYm9va3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MDIyMTI0NzE7fX0=', 1702212701),
-('dRkVjCbvnXsra1RM73uhnDy93RdYy4VcO2JcOsIQ', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWnJzdlo2NlpzaTVxY1NCcVZxeFJBTDBMV0R0dWc0S0hVdFRZYzgxSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXNlcnZhdGlvbnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MDIxNjYwMTg7fX0=', 1702176950),
-('Y074fZM996lwxxCDCUs020iKqMX96FbZqDujM5QL', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiZEFlSGdyMHVGV0RDRFZIT08zQUxEYmtQNEM1MXN3ZjYySm12SjVDSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1702165968);
+('iBtjHYKpiKEEYfCw5Pw1JRSlJ5hRev54DJ6Yusy7', 13, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVDdEY0ZBenE0ZXQ4Sm9tSjBwc3RUQXVXVXdrMzFNUW14S2dZM3VPWCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXNlcnZhdGlvbnMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MDIyNDU4ODg7fX0=', 1702246256);
 
 -- --------------------------------------------------------
 
@@ -217,6 +226,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `book_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Restrições para tabelas `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_id_book_foreign` FOREIGN KEY (`id_book`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

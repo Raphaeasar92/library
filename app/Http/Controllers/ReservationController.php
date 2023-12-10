@@ -11,14 +11,12 @@ use App\Models\User;
 class ReservationController extends Controller
 {
 
-    // private $objUser;
     private $objBook;
     private $objReservation;
 
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->objUser = new User();
         $this->objBook = new ModelBook();
         $this->objReservation = new ModelReservation();
 
@@ -83,9 +81,9 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        $book=$this->objReservation->find($id);
-        $users=$this->objUser->all();
-        return view('reservation_create',compact('reservation','reservations'));
+        $reservation=$this->objReservation->find($id);
+        $books=$this->objBook->all();
+        return view('reservation_create',compact('reservation','books'));
     }
 
     /**
@@ -95,7 +93,7 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookRequest $request, $id)
+    public function update(ReservationRequest $request, $id)
     {
         $this->objReservation->where(['id'=>$id])->update([
             'id_book'=>$request->id_book,

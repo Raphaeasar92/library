@@ -6,7 +6,7 @@
     <h1 class="text-center">Library - Reservation</h1><hr>
 
   <div class="text-center mt-3 mb-4">
-    <a href="{{url('create_reservations/create')}}">
+    <a href="{{url('reservations/create')}}">
         <button class="btn btn-success">Register</button>
     </a>
 </div>
