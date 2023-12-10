@@ -27,7 +27,7 @@ Route::get('/dashboard', [BookController::class, 'home', '__invoke'])->name('das
 Route::get('/books', [BookController::class, 'index', '__invoke'])->name('books');
 
 Route::get('/books/create', [BookController::class, 'create', '__invoke']);
-Route::post('/books/store', [BookController::class, 'store', '__invoke']);
+// Route::gets('/books/store', [BookController::class, 'store', '__invoke']);
 
 Route::get('/books/{id}', [BookController::class, 'show', '__invoke']);
 

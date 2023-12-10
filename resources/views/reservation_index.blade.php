@@ -7,7 +7,7 @@
 
   <div class="text-center mt-3 mb-4">
     <a href="{{url('create_reservations/create')}}">
-        <button class="btn btn-success">Register Reservation</button>
+        <button class="btn btn-success">Register</button>
     </a>
 </div>
 
